@@ -98,13 +98,12 @@ following current-workspace checks succeeded:
 - `lake env lean -j 1 RequestProject/AxiomCheck.lean`, reporting only
   `propext`, `Classical.choice`, and `Quot.sound` for the audited declarations.
 
-The guarded `verification/Audit.lean` run was also successful in the historical Linux
-export recorded above. On this Windows machine the same audit process can terminate
-without diagnostics while expanding all guarded `#print axioms` checks, so the current
-V2 record does not replace the Linux/Palomar audit with that local process result.
-Until a clean build and sandboxed Comparator run are recorded against the initial V2
-commit, this file intentionally makes no claim that the current snapshot has
-passed those two gates.
+The guarded `verification/Audit.lean` run was successful in the historical Linux
+export and in the current Windows V2 workspace. It reports the same permitted axioms
+and definition-equality guards. The remaining unreproduced gate is the sandboxed
+Comparator run from the exact public commit in a Linux/Palomar environment. Until
+that run is recorded, this file intentionally makes no claim that Palomar's own
+sandbox review has passed.
 
 ## Caveat on the Comparator sandbox
 

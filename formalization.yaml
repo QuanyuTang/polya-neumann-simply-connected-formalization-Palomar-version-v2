@@ -45,7 +45,9 @@ sources:
       This is the authors' manuscript source, included in the submitted repository.
       It is not yet a journal article or arXiv preprint. The proof development began
       from an earlier Lean/Mathlib v4.28.0 checkout; this snapshot contains the
-      substantive compatibility port and the Palomar interface.
+      substantive compatibility port and the Palomar interface. The manuscript is
+      currently in preparation; an arXiv posting is planned, but no arXiv identifier
+      is available yet.
   - title: "Pólya's conjecture for Euclidean balls"
     authors:
       - "N. Filonov"
@@ -56,6 +58,16 @@ sources:
     location: "Invent. Math. 234 (2023), 129–169"
     relationship: background
     note: "Background on the Pólya conjecture cited in the accompanying paper; not formalized here."
+
+related_formalizations:
+  - id: "https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization/tree/b37a190b8afc6efb128f204176d26deec8d88a8c"
+    relationship: adapts
+    note: >-
+      This Palomar-preparation snapshot ports the substantive Lean development
+      from the cited Lean/Mathlib v4.28.0 repository to Lean/Mathlib v4.35.0-rc2
+      and adds the Palomar Challenge/Solution interface. The two main theorem
+      statements are preserved; compatibility edits are confined to proof code
+      and module headers.
 
 status:
   scope: >-

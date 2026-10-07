@@ -7,6 +7,8 @@ Pólya inequality for bounded simply connected planar Lipschitz domains, togethe
 with a Challenge/Solution interface prepared for the
 [Palomar Registry](https://palomar-registry.org/). This repository is a
 pre-submission snapshot; it has not yet been registered by Palomar.
+The accompanying paper is currently in preparation; the authors plan to post a
+public version on arXiv. No arXiv identifier is available yet.
 
 [Lean source](RequestProject/Main.lean) ·
 [Palomar Challenge](Challenge.lean) ·

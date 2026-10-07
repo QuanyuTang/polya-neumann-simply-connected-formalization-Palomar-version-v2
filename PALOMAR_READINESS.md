@@ -177,11 +177,11 @@ proof term than in `Challenge.lean`, which Comparator rejects.
 
 ## 6. Axiom audit
 
-The exit-code-0 audit result below is the historical Linux result. The current Windows
-run of `RequestProject/AxiomCheck.lean` succeeds and reports only the three permitted
-standard axioms; the full guarded `verification/Audit.lean` process can terminate
-without diagnostics on this machine while expanding all checks. Re-run the guarded
-audit from the exact public commit on Linux before registration.
+The exit-code-0 audit result below is retained from the historical Linux export. The
+current Windows runs of both `RequestProject/AxiomCheck.lean` and the guarded
+`verification/Audit.lean` also succeed and report only the three permitted standard
+axioms. Re-run the guarded audit from the exact public commit in Palomar's Linux
+sandbox before registration.
 
 `lake env lean RequestProject/AxiomCheck.lean` and the guarded
 `lake env lean verification/Audit.lean` (exit code 0) give, for `main`, `main_counting`,
