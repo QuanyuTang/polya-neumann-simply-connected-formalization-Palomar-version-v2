@@ -37,7 +37,7 @@ sources:
       - "Quanyu Tang"
       - "Zuoqin Wang"
     type: paper
-    id: "https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization-Palomar-version-v2/blob/main/paper/N_simply_connected_strict_v3.tex"
+    id: "https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization-Palomar-version-v2/blob/99037f07a1a3a8eb475133eee1934a2fbb77c35d/paper/N_simply_connected_strict_v3.tex"
     location: "Theorem 1 (thm:main) and the counting formulation following it"
     relationship: formalizes
     author_endorsement: participated
