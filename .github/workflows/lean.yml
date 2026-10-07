@@ -1,0 +1,51 @@
+name: Lean verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-verification-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      LEAN_NUM_THREADS: "1"
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, Node.js 24
+        with:
+          persist-credentials: "false"
+
+      - name: Check the verified source checksums
+        run: sha256sum --check verification/SHA256SUMS
+
+      - name: Build with the pinned Lean toolchain
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865 # v1
+        with:
+          auto-config: "false"
+          build: "true"
+          build-args: "RequestProject.Main Challenge Solution"
+          use-mathlib-cache: "true"
+          use-github-cache: "false"
+
+      - name: Check statements and enforce axiom dependencies
+        run: |
+          lake env lean --version
+          lake env lean RequestProject/AxiomCheck.lean
+          lake env lean verification/Audit.lean
+
+      - name: Check Lean source requirements (Palomar)
+        run: python3 scripts/check-lean-sources.py
+
+      - name: Check that verification preserved the pinned files
+        run: git diff --exit-code

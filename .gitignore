@@ -1,0 +1,10 @@
+.lake
+*.log
+/tmp/
+/verification/*
+!/verification/Audit.lean
+!/verification/SHA256SUMS
+!/verification/local-build.txt
+Probe*.lean
+TmpCheck.lean
+tmp_*.lean

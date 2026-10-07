@@ -1,0 +1,185 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4.
+# This file records the provenance and verification scope of this snapshot.
+version: "v0.4"
+
+project:
+  name: "Strict Neumann Polya inequality on simply connected planar domains"
+  description: >-
+    A Lean 4 / Mathlib formalization of the strict Neumann Pólya inequality for
+    bounded simply connected Lipschitz domains in the plane. The plane is
+    identified with ℂ; the Neumann eigenvalues μ_0 ≤ μ_1 ≤ ... are defined by
+    the Courant–Fischer min–max formula for the form ∫|∇u|² on H¹(Ω) (weak
+    gradients in L²), indexed from 0 and repeated according to multiplicity,
+    and N_N(E) = #{j ≥ 0 : μ_j < E}. The principal results are: for every
+    bounded simply connected Lipschitz domain Ω and every integer j ≥ 1,
+    |Ω| μ_j(Ω) < 4πj; and, equivalently, N_N(E) > |Ω| E / (4π) for every E > 0.
+    The proof development (about 100,000 lines, namespace PolyaNeumann) also
+    identifies the variational eigenvalues with the spectrum of the constructed
+    self-adjoint Neumann operator, proves a quantitative smooth-domain estimate
+    via boundary transport, Cayley/monodromy rank bounds and a Herglotz-wave
+    reduction, and passes to Lipschitz domains by smooth approximation.
+  authors:
+    - "Quanyu Tang"
+    - "Zuoqin Wang"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Quanyu Tang"
+    - "Zuoqin Wang"
+
+classification:
+  arxiv: ["math.SP", "math.AP"]
+  msc2020: ["35P15", "35P20", "35J05"]
+
+sources:
+  - title: "The Neumann Pólya inequality on simply connected planar domains"
+    authors:
+      - "Quanyu Tang"
+      - "Zuoqin Wang"
+    type: paper
+    id: "https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization/blob/b37a190b8afc6efb128f204176d26deec8d88a8c/paper/N_simply_connected_strict_v3.tex"
+    location: "Theorem 1 (thm:main) and the counting formulation following it"
+    relationship: formalizes
+    author_endorsement: participated
+    note: >-
+      This is the authors' manuscript source. It is not yet a journal article or
+      arXiv preprint; the immutable GitHub URL identifies the version used as the
+      informal source for this formalization.
+  - title: "Pólya's conjecture for Euclidean balls"
+    authors:
+      - "N. Filonov"
+      - "M. Levitin"
+      - "I. Polterovich"
+      - "D. A. Sher"
+    type: paper
+    location: "Invent. Math. 234 (2023), 129–169"
+    relationship: background
+    note: "Background on the Pólya conjecture cited in the accompanying paper; not formalized here."
+
+related_formalizations:
+  - id: "https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization/tree/b37a190b8afc6efb128f204176d26deec8d88a8c"
+    relationship: adapts
+    note: >-
+      This Palomar-preparation snapshot ports the substantive Lean development
+      from the cited Lean/Mathlib v4.28.0 repository to Lean/Mathlib v4.35.0-rc2
+      and adds the Palomar Challenge/Solution interface. The two main theorem
+      statements are preserved; compatibility edits are confined to proof code
+      and module headers.
+
+status:
+  scope: >-
+    Formalized and proved without sorry: (1) PolyaNeumann.strict_neumann_polya
+    (alias `main`): for every bounded, simply connected Lipschitz domain Ω ⊆ ℂ
+    and every natural number j ≥ 1, volume Ω * neumannEigenvalue Ω j <
+    ENNReal.ofReal (4 * π * j); (2) PolyaNeumann.strict_neumann_polya_count
+    (alias `main_counting`): for every such Ω and every real E > 0,
+    volume Ω * ENNReal.ofReal E / ENNReal.ofReal (4 * π) <
+    neumannCount Ω (ENNReal.ofReal E). Lipschitz domains are defined by local
+    rigid-motion graph charts with Lipschitz graph functions; the Neumann
+    eigenvalues are the variational (min–max) eigenvalues of the H¹ energy form,
+    counted with multiplicity and indexed from μ_0 = 0. The Palomar Challenge
+    restates exactly these two theorems, with verbatim copies of the
+    definitions, in the namespace PalomarPolyaNeumann. Not part of the claims:
+    seven experimental modules of the RequestProject directory that are not
+    imported by RequestProject.Main, Solution, or any other module
+    (ConformalConormalGeometry, ConformalH1Pullback, FourierCoefficientGain,
+    HerglotzKernelForm, LocalConformalObservationKernel,
+    NeumannFractionalResolvent, PhysicalCauchyJump); they do not build with
+    Lean/Mathlib v4.35.0-rc2 and are outside the audited theorem path.
+  # Counts refer to the proof development (RequestProject.Main closure and
+  # Solution.lean), excluding Challenge.lean's two deliberate statement sorries.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  # The only axioms used are Lean's standard propext, Classical.choice and
+  # Quot.sound; the project declares no axioms of its own.
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "PolyaNeumann.strict_neumann_polya"
+      file: "RequestProject/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+    - declaration: "PolyaNeumann.strict_neumann_polya_count"
+      file: "RequestProject/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+
+automation:
+  methods:
+    - method: agent
+      models: ["Aristotle (Harmonic)", "Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: >-
+        Human-directed AI-assisted development. Aristotle (Harmonic) produced the
+        initial formalization and the compatibility port from Lean/Mathlib v4.28.0
+        to v4.35.0-rc2; Codex was used for the Palomar interface, metadata, audits,
+        and release checks. Lean and Mathlib are the proof tools.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based usage; not itemized"
+        hardware: "local development machine"
+      prompting_notes: >-
+        The authors supplied the mathematical statement and proof direction. The
+        agents were instructed to preserve the theorem statements, produce a
+        self-contained Challenge/Solution interface, and run Lean, axiom, and
+        Comparator checks.
+  spend_usd: "not tracked"
+  notes: >-
+    The mathematical result and manuscript come from the human authors. The
+    formal proof development and Palomar port were AI-assisted and remain under
+    the authors' responsibility. This snapshot records local Lean kernel,
+    axiom-audit, source, checksum, and Comparator checks; Palomar's own review
+    has not yet been run.
+
+fidelity:
+  divergences: >-
+    None known for the stated theorem. Formalization conventions: ℝ² is
+    identified with ℂ; area is Lebesgue measure as an extended nonnegative real
+    (volume Ω : ℝ≥0∞); eigenvalues take values in ℝ≥0∞ and are defined by the
+    min–max formula over (j+1)-dimensional subspaces of L²(Ω) (subspaces not
+    contained in H¹(Ω) contribute ⊤), which for a bounded Lipschitz domain
+    coincides with the Neumann spectrum (formally proved as
+    PolyaNeumann.neumannEigenvalue_eq_spectral). The counting function is an
+    extended natural number. The paper's hypothesis "bounded simply connected
+    Lipschitz domain" is expressed by Bornology.IsBounded Ω, IsLipschitzDomain Ω
+    (which includes open and connected) and SimplyConnectedSpace Ω.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The authors' self-assessment is supported by the Lean kernel, verification/Audit.lean
+    (guarded #print axioms checks and definitional-equality checks between the
+    Palomar statement definitions and RequestProject/Defs.lean), source scans,
+    checksums, and Comparator. No independent expert peer review is claimed, and
+    this snapshot has not yet been registered by Palomar.
+
+alignment:
+  namespace: "PalomarPolyaNeumann"
+  statements:
+    - source: "Theorem 1 (thm:main), paper/N_simply_connected_strict_v3.tex: |Ω| μ_j(Ω) < 4πj for bounded simply connected Lipschitz Ω ⊂ ℝ², j ≥ 1"
+      lean: "PalomarPolyaNeumann.strict_neumann_polya"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        Proved in Solution.lean by PolyaNeumann.strict_neumann_polya
+        (RequestProject/Main.lean; top-level alias `main`). The Palomar
+        statement-side definitions are verbatim copies of RequestProject/Defs.lean
+        and are checked definitionally equal to them in verification/Audit.lean.
+    - source: "Counting form stated after Theorem 1: N_N(E) > E|Ω|/(4π) for all E > 0"
+      lean: "PalomarPolyaNeumann.strict_neumann_polya_count"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        Proved in Solution.lean by PolyaNeumann.strict_neumann_polya_count
+        (RequestProject/Main.lean; top-level alias `main_counting`). Written as
+        |Ω|·E/(4π) < N_N(E) in ℝ≥0∞, with N_N counting indices j ≥ 0 including
+        μ_0 = 0, as in the paper.
+
+acknowledgements: >-
+  Built on Lean 4 and Mathlib. The authors thank the Aristotle (Harmonic) and
+  Codex systems for assistance with formalization, porting, and verification.

@@ -1,0 +1,125 @@
+# Verification record
+
+Date of this record: 2026-10-07 (UTC).
+
+This file combines historical results from the Aristotle Palomar export with checks
+performed while preparing this private repository. The historical Linux run below was
+not performed from a commit of this repository: this repository had not yet received its
+initial Git commit when the record was imported. It therefore must not be read as a
+clean-checkout verification of a particular V2 commit. Before public submission, rerun
+the complete sequence from the exact public commit in a Linux/Palomar sandbox and add
+that commit's full SHA here.
+
+The historical commands were run on Linux x86_64 on the Aristotle export, with the
+Mathlib dependency checkout and its downloaded cache supplied by `lake exe cache get`.
+The current Windows workspace is used for source, metadata, checksum, and compatibility
+checks; Windows cannot reproduce Palomar's Linux namespace sandbox.
+
+Toolchain file: leanprover/lean4:v4.35.0-rc2
+Mathlib: v4.35.0-rc2, resolved revision 065356127b1dc0016f66b7283ce0ce2c4055aa55
+(the pinned Mathlib commit's own `lean-toolchain` is also leanprover/lean4:v4.35.0-rc2)
+
+Previous record (before the port): Lean 4.28.0, Mathlib 8f9d9cff6bd728b17a24e163c9402775d9e6a365,
+`lake build +RequestProject.Main` completed with 3857 jobs.
+
+## Historical Linux commands and results
+
+The following rows are retained from the Aristotle export as a portability record;
+they are not a claim that those commands have been rerun from the current V2 commit.
+
+- `lake env lean --version`
+  - Output: `Lean (version 4.35.0-rc2, x86_64-unknown-linux-gnu, commit 11acb17ec6b07a8f9e9173e6845197929540936b, Release)`
+  - Exit code 0.
+- `lake exe cache get`
+  - Exit code 0 (Mathlib cache already present and decompressed: 8915 files).
+- `lake build RequestProject.Main`
+  - Exit code 0; `Build completed successfully (4214 jobs).`
+- `lake build Challenge`
+  - Exit code 0; `Build completed successfully (8932 jobs).`
+  - Emits exactly two `declaration uses 'sorry'` warnings, for the two deliberate
+    Palomar statement placeholders `PalomarPolyaNeumann.strict_neumann_polya` and
+    `PalomarPolyaNeumann.strict_neumann_polya_count` in `Challenge.lean`.
+- `lake build Solution`
+  - Exit code 0; `Build completed successfully (9230 jobs).` No `sorry` warnings.
+- `lake env lean RequestProject/AxiomCheck.lean`
+  - Exit code 0. Output:
+    ```
+    'PolyaNeumann.strict_neumann_polya' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'PolyaNeumann.strict_neumann_polya_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'main' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'main_counting' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'PolyaNeumann.uniform_cayley_rank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+    ```
+- `lake env lean verification/Audit.lean`
+  - Exit code 0; no errors. Every `#guard_msgs`-guarded `#print axioms` check passed
+    (main theorems, aliases, Palomar wrappers and key bridge declarations all depend only
+    on `propext`, `Classical.choice`, `Quot.sound`), and the `rfl` checks that the
+    Palomar statement definitions coincide with those of `RequestProject/Defs.lean` passed.
+- `#print axioms` for the Palomar wrappers (scratch file importing `Solution`):
+    ```
+    'PalomarPolyaNeumann.strict_neumann_polya' depends on axioms: [propext, Classical.choice, Quot.sound]
+    'PalomarPolyaNeumann.strict_neumann_polya_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+    ```
+- `lake comparator --inadvisably-no-sandbox` (uses `comparator.json`)
+  - Exit code 0. Output ends with:
+    ```
+    Running Lean default kernel on solution
+    Lean default kernel accepts the solution
+    Your solution is okay!
+    ```
+- `lake comparator --config <copy of comparator.json with "enable_nanoda": true, "enable_con_ron": true> --inadvisably-no-sandbox`
+  - Exit code 0. Output ends with:
+    ```
+    Running con-ron kernel on solution
+    con-ron: accepted 74995 declarations (--verified)
+    con-ron kernel accepts the solution
+    Running nanoda kernel on solution
+    nanoda kernel accepts the solution
+    Running Lean default kernel on solution
+    Lean default kernel accepts the solution
+    Your solution is okay!
+    ```
+- `python3 scripts/check-lean-sources.py` (PalomarTemplate module-header check): exit code 0.
+- `ruby scripts/validate-formalization.rb` (PalomarTemplate metadata check): exit code 0
+  (`formalization.yaml contains no TEMPLATE values or project placeholders`).
+
+## Current V2 preparation checks
+
+For this private snapshot, the Palomar source-requirements scan, metadata loader,
+Comparator configuration loader, and SHA-256 verification have been run successfully.
+After refreshing the Mathlib cache and running Lake sequentially on Windows, the
+following current-workspace checks succeeded:
+
+- `lake env lean -j 1 RequestProject/Main.lean -o .lake/build/lib/lean/RequestProject/Main.olean`
+  (the complete substantive theorem path);
+- `lake build Challenge` (8932 jobs; exactly the two deliberate Challenge `sorry`
+  warnings);
+- `lake build Solution` (9230 jobs; no `sorry` warnings); and
+- `lake env lean -j 1 RequestProject/AxiomCheck.lean`, reporting only
+  `propext`, `Classical.choice`, and `Quot.sound` for the audited declarations.
+
+The guarded `verification/Audit.lean` run was also successful in the historical Linux
+export recorded above. On this Windows machine the same audit process can terminate
+without diagnostics while expanding all guarded `#print axioms` checks, so the current
+V2 record does not replace the Linux/Palomar audit with that local process result.
+Until a clean build and sandboxed Comparator run are recorded against the initial V2
+commit, this file intentionally makes no claim that the current private snapshot has
+passed those two gates.
+
+## Caveat on the Comparator sandbox
+
+The Comparator was run with `--inadvisably-no-sandbox` because the verification
+environment does not permit creating the Linux user namespaces that Comparator's
+sandbox needs. Palomar runs Comparator inside its own sandbox; that sandboxed run has
+not been reproduced here.
+
+## Source search
+
+A full-text search of all `.lean` files finds `sorry` only in `Challenge.lean` (two
+deliberate statement placeholders); the `admit` and `native_decide` tactics and `axiom`
+declarations do not occur in any `.lean` file of the repository (the only textual hits are
+the English word "admit" in two docstrings and a comment in `Solution.lean` stating that
+no `sorry`/`native_decide` is used).
+
+Building emits existing non-fatal linter, deprecation and tactic-suggestion messages in
+the modular source tree; they do not affect the successful builds or the axiom audit.
