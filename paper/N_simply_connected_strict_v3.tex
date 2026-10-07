@@ -28,6 +28,7 @@
 \newcommand{\Argm}{\operatorname{Arg}_{-}}
 \newcommand{\ph}{\varphi}
 \title[The Neumann P\'olya inequality]{The Neumann P\'olya inequality on simply connected planar domains}
+\author{Quanyu Tang \and Zuoqin Wang}
 \date{}
 \hypersetup{pdftitle={The Neumann Polya inequality on simply connected planar domains},pdfsubject={Neumann eigenvalues on simply connected planar domains}}
 \begin{document}
@@ -128,9 +129,10 @@ gives $E|\Omega|<4\pi m$.
 \subsection{Formal verification}
 
 Theorem~\ref{thm:main} and its equivalent strict counting formulation have
-been formalized and machine-checked in Lean 4.28.0.  The development is
+been formalized and machine-checked in Lean 4.28.0, and a compatibility port
+has been checked with Lean 4.35.0-rc2.  The Palomar-preparation snapshot is
 available at
-\url{https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization}.
+\url{https://github.com/QuanyuTang/polya-neumann-simply-connected-formalization-Palomar-version-v2}.
 It identifies $\mathbb R^2$ with $\mathbb C$, defines the Neumann
 eigenvalues by the variational min--max construction, and proves the stated
 inequalities for bounded simply connected Lipschitz domains.  The repository

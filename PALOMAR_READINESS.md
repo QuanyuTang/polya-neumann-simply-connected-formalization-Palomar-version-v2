@@ -2,10 +2,11 @@
 
 Date of the record: 2026-10-07. The Linux command transcript in
 `verification/local-build.txt` is inherited from the Aristotle Palomar export and was
-not rerun from a commit of this private V2 repository. It is retained as a historical
+not rerun from a commit of this V2 repository. It is retained as a historical
 portability record, not as evidence for a particular V2 commit. The source, metadata,
 checksum, and compatibility audits below were performed while preparing this snapshot.
-Before public submission, rerun the full build and sandboxed Comparator from the exact+public commit and append its full SHA and results.
+Before public submission, rerun the full build and sandboxed Comparator from the exact
+public commit and append its full SHA and results.
 
 ## 1. Versions
 
@@ -244,7 +245,7 @@ The metadata names Quanyu Tang and Zuoqin Wang as the authors and responsible
 maintainers, records the AI-assisted Aristotle/Codex workflow, and identifies the
 immutable manuscript source commit. The repository is licensed under Apache-2.0.
 The review status is deliberately `self-assessed`: the local checks below are not
-an independent mathematical peer review and this private snapshot has not been
+an independent mathematical peer review and this snapshot has not been
 submitted to or registered by Palomar.
 
 ## 11. Verdict for this snapshot

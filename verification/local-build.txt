@@ -3,7 +3,7 @@
 Date of this record: 2026-10-07 (UTC).
 
 This file combines historical results from the Aristotle Palomar export with checks
-performed while preparing this private repository. The historical Linux run below was
+performed while preparing this repository. The historical Linux run below was
 not performed from a commit of this repository: this repository had not yet received its
 initial Git commit when the record was imported. It therefore must not be read as a
 clean-checkout verification of a particular V2 commit. Before public submission, rerun
@@ -85,7 +85,7 @@ they are not a claim that those commands have been rerun from the current V2 com
 
 ## Current V2 preparation checks
 
-For this private snapshot, the Palomar source-requirements scan, metadata loader,
+For this snapshot, the Palomar source-requirements scan, metadata loader,
 Comparator configuration loader, and SHA-256 verification have been run successfully.
 After refreshing the Mathlib cache and running Lake sequentially on Windows, the
 following current-workspace checks succeeded:
@@ -103,7 +103,7 @@ export recorded above. On this Windows machine the same audit process can termin
 without diagnostics while expanding all guarded `#print axioms` checks, so the current
 V2 record does not replace the Linux/Palomar audit with that local process result.
 Until a clean build and sandboxed Comparator run are recorded against the initial V2
-commit, this file intentionally makes no claim that the current private snapshot has
+commit, this file intentionally makes no claim that the current snapshot has
 passed those two gates.
 
 ## Caveat on the Comparator sandbox

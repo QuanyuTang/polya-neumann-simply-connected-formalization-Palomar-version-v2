@@ -5,7 +5,7 @@
 This repository contains a modular Lean 4 formalization of the strict Neumann
 Pólya inequality for bounded simply connected planar Lipschitz domains, together
 with a Challenge/Solution interface prepared for the
-[Palomar Registry](https://palomar-registry.org/). This private repository is a
+[Palomar Registry](https://palomar-registry.org/). This repository is a
 pre-submission snapshot; it has not yet been registered by Palomar.
 
 [Lean source](RequestProject/Main.lean) ·
@@ -141,8 +141,9 @@ right after it) is the mathematical source.
 | Theorem 1: \(|\Omega|\mu_j(\Omega)<4\pi j\), \(j\ge1\) | `PalomarPolyaNeumann.strict_neumann_polya` | `PolyaNeumann.strict_neumann_polya` (`main`) |
 | \(N_N(E)>E|\Omega|/(4\pi)\), \(E>0\) | `PalomarPolyaNeumann.strict_neumann_polya_count` | `PolyaNeumann.strict_neumann_polya_count` (`main_counting`) |
 
-The paper's formal-verification paragraph refers to the earlier Lean 4.28.0
-build; the statements are unchanged in the port.
+The paper's formal-verification paragraph records the original Lean 4.28.0
+formalization and the Lean 4.35.0-rc2 compatibility port; the statements are
+unchanged in the port.
 
 ## 8. Scope and the meaning of a Palomar record
 
