@@ -42,12 +42,13 @@ sources:
     relationship: formalizes
     author_endorsement: participated
     note: >-
-      This is the authors' manuscript source, included in the submitted repository.
-      It is not yet a journal article or arXiv preprint. The proof development began
-      from an earlier Lean/Mathlib v4.28.0 checkout; this snapshot contains the
-      substantive compatibility port and the Palomar interface. The manuscript is
-      currently in preparation; an arXiv posting is planned, but no arXiv identifier
-      is available yet.
+      This is the authors' manuscript source, included in the immutable Palomar
+      submission snapshot at the commit pinned by this source URL. It is not yet a
+      journal article or arXiv preprint. The proof development began from an earlier
+      Lean/Mathlib v4.28.0 checkout; that snapshot contains the substantive
+      compatibility port and the Palomar interface. The manuscript is currently in
+      preparation; an arXiv posting is planned, but no arXiv identifier is available
+      yet.
   - title: "Pólya's conjecture for Euclidean balls"
     authors:
       - "N. Filonov"
@@ -136,7 +137,9 @@ automation:
     formal proof development and Palomar port were AI-assisted and remain under
     the authors' responsibility. This snapshot records local Lean kernel,
     axiom-audit, source, checksum, and Comparator checks; Palomar's own review
-    has not yet been run.
+    passed for the immutable Palomar v1.0.0 snapshot (PALOMAR-2026-10-09,
+    version 1); the current main branch may contain documentation-only maintenance
+    commits after that registered snapshot.
 
 fidelity:
   divergences: >-
@@ -158,13 +161,15 @@ review:
     The authors' self-assessment is supported by the Lean kernel, verification/Audit.lean
     (guarded #print axioms checks and definitional-equality checks between the
     Palomar statement definitions and RequestProject/Defs.lean), source scans,
-    checksums, and Comparator. No independent expert peer review is claimed, and
-    this snapshot has not yet been registered by Palomar.
+    checksums, and Comparator. No independent expert peer review is claimed. The
+    Palomar v1.0.0 snapshot was registered as
+    PALOMAR-2026-10-09, version 1; the current main branch may contain
+    documentation-only maintenance commits after that immutable snapshot.
 
 alignment:
   namespace: "PalomarPolyaNeumann"
   statements:
-    - source: "Theorem 1 (thm:main), paper/N_simply_connected_strict_v3.tex: |Ω| μ_j(Ω) < 4πj for bounded simply connected Lipschitz Ω ⊂ ℝ², j ≥ 1"
+    - source: "Theorem 1 (thm:main) in the manuscript source pinned in sources[0]: |Ω| μ_j(Ω) < 4πj for bounded simply connected Lipschitz Ω ⊂ ℝ², j ≥ 1"
       lean: "PalomarPolyaNeumann.strict_neumann_polya"
       module: "Challenge"
       status: "proved"

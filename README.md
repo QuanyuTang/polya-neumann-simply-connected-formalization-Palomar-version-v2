@@ -5,17 +5,18 @@
 This repository contains a modular Lean 4 formalization of the strict Neumann
 Pólya inequality for bounded simply connected planar Lipschitz domains, together
 with a Challenge/Solution interface prepared for the
-[Palomar Registry](https://palomar-registry.org/). This repository is a
-pre-submission snapshot; it has not yet been registered by Palomar.
-The accompanying paper is currently in preparation; the authors plan to post a
-public version on arXiv. No arXiv identifier is available yet.
+[Palomar Registry](https://palomar-registry.org/). The Palomar v1.0.0 snapshot
+was registered as [PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
+The mathematical result was obtained by the authors with assistance from ChatGPT.
+The Lean formalization was produced by the authors with assistance from Aristotle
+(Harmonic) and Codex. The accompanying paper is currently in preparation and will
+be posted on arXiv shortly. No arXiv identifier is available yet.
 
 [Lean source](RequestProject/Main.lean) ·
 [Palomar Challenge](Challenge.lean) ·
 [Palomar Solution](Solution.lean) ·
 [Verification audit](verification/Audit.lean) ·
-[Paper PDF](paper/N_simply_connected_strict_v3.pdf) ·
-[Paper source](paper/N_simply_connected_strict_v3.tex) ·
+[Palomar Registry entry](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1) ·
 [Palomar readiness report](PALOMAR_READINESS.md)
 
 ## 1. The substantive Lean theorem
@@ -133,19 +134,22 @@ In particular `sorryAx` does not occur. The proof development and `Solution.lean
 contain no `sorry`, `admit` or `native_decide`, and the project declares no
 custom axioms.
 
-## 7. Relationship with the paper
+## 7. Relationship with the planned paper
 
-`paper/N_simply_connected_strict_v3.tex` (Theorem 1 and the counting form stated
-right after it) is the mathematical source.
+The accompanying manuscript is currently in preparation and will be posted on
+arXiv shortly. Its main theorem and counting form correspond to the following
+formal statements. The manuscript source used for the Palomar submission is
+pinned in `formalization.yaml` at the immutable Palomar commit.
 
 | Paper | Palomar Challenge | Proof development |
 | --- | --- | --- |
 | Theorem 1: \(|\Omega|\mu_j(\Omega)<4\pi j\), \(j\ge1\) | `PalomarPolyaNeumann.strict_neumann_polya` | `PolyaNeumann.strict_neumann_polya` (`main`) |
 | \(N_N(E)>E|\Omega|/(4\pi)\), \(E>0\) | `PalomarPolyaNeumann.strict_neumann_polya_count` | `PolyaNeumann.strict_neumann_polya_count` (`main_counting`) |
 
-The paper's formal-verification paragraph records the original Lean 4.28.0
-formalization and the Lean 4.35.0-rc2 compatibility port; the statements are
-unchanged in the port.
+The planned paper will include a formal-verification paragraph describing the
+Lean 4.28.0 formalization and the Lean 4.35.0-rc2 compatibility port; the
+statements are unchanged in the port. The Palomar Registry record is
+[PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
 
 ## 8. Scope and the meaning of a Palomar record
 
@@ -176,5 +180,4 @@ not part of any claim.
 | `verification/SHA256SUMS` | Checksums of all Lean sources |
 | `verification/local-build.txt` | Recorded local build, audit and Comparator run |
 | `scripts/` | Palomar template checks (source requirements, metadata, Comparator) |
-| `paper/` | Paper source and PDF |
 | `LICENSE` | Apache License 2.0 (covers this repository's own files only) |

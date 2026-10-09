@@ -1,14 +1,14 @@
 # Verification record
 
-Date of this record: 2026-10-07 (UTC).
+Date of this record: 2026-10-09 (UTC).
 
 This file combines historical results from the Aristotle Palomar export with checks
 performed while preparing this repository. The historical Linux run below was
 not performed from a commit of this repository: this repository had not yet received its
-initial Git commit when the record was imported. It therefore must not be read as a
-clean-checkout verification of a particular V2 commit. Before public submission, rerun
-the complete sequence from the exact public commit in a Linux/Palomar sandbox and add
-that commit's full SHA here.
+initial Git commit when the record was imported. It is retained as a portability record,
+not as a clean-checkout verification of the current main branch. The exact submitted
+commit `f07f1c7051862ba146429db6eda5dc4e8b020f74` was later verified by Palomar and
+registered as [PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
 
 The historical commands were run on Linux x86_64 on the Aristotle export, with the
 Mathlib dependency checkout and its downloaded cache supplied by `lake exe cache get`.
@@ -100,17 +100,15 @@ following current-workspace checks succeeded:
 
 The guarded `verification/Audit.lean` run was successful in the historical Linux
 export and in the current Windows V2 workspace. It reports the same permitted axioms
-and definition-equality guards. The remaining unreproduced gate is the sandboxed
-Comparator run from the exact public commit in a Linux/Palomar environment. Until
-that run is recorded, this file intentionally makes no claim that Palomar's own
-sandbox review has passed.
+and definition-equality guards. Palomar's sandboxed verification of the exact submitted
+commit also passed; the local Windows workspace cannot reproduce that Linux sandbox.
 
 ## Caveat on the Comparator sandbox
 
-The Comparator was run with `--inadvisably-no-sandbox` because the verification
+The local Comparator was run with `--inadvisably-no-sandbox` because the verification
 environment does not permit creating the Linux user namespaces that Comparator's
-sandbox needs. Palomar runs Comparator inside its own sandbox; that sandboxed run has
-not been reproduced here.
+sandbox needs. Palomar runs Comparator inside its own sandbox; its verification of the
+registered commit passed there.
 
 ## Source search
 

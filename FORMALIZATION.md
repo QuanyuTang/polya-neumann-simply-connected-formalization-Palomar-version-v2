@@ -53,4 +53,7 @@ The `RequestProject` directory contains the complete Lean source tree. Files are
 
 The source uses Lean `leanprover/lean4:v4.35.0-rc2` and Mathlib `v4.35.0-rc2`
 (commit `065356127b1dc0016f66b7283ce0ce2c4055aa55`); it was ported from the
-original Lean/Mathlib `v4.28.0` version (see `PALOMAR_READINESS.md`). The paper source and compiled PDF are kept in the `paper/` directory.
+original Lean/Mathlib `v4.28.0` version (see `PALOMAR_READINESS.md`). The
+accompanying paper is currently in preparation and will be posted on arXiv
+shortly. The Palomar v1.0.0 snapshot is recorded at
+[PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).

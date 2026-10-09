@@ -1,12 +1,12 @@
 # Palomar readiness report
 
-Date of the record: 2026-10-07. The Linux command transcript in
+Date of the record: 2026-10-09. The Linux command transcript in
 `verification/local-build.txt` is inherited from the Aristotle Palomar export and was
-not rerun from a commit of this V2 repository. It is retained as a historical
-portability record, not as evidence for a particular V2 commit. The source, metadata,
-checksum, and compatibility audits below were performed while preparing this snapshot.
-Before public submission, rerun the full build and sandboxed Comparator from the exact
-public commit and append its full SHA and results.
+not rerun locally from a commit of this V2 repository. It is retained as a historical
+portability record. The source, metadata, checksum, and compatibility audits below were
+performed while preparing the Palomar submission snapshot. The exact submitted commit
+`f07f1c7051862ba146429db6eda5dc4e8b020f74` passed Palomar's mechanical verification
+and automated review and was registered as [PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
 
 ## 1. Versions
 
@@ -123,8 +123,8 @@ The Challenge statements are the same with `PalomarPolyaNeumann` definitions.
 The table in this section is the historical Linux record imported from the Aristotle
 export; it is not a clean-checkout claim about a committed V2 revision. Current Windows
 preparation checks additionally compiled `RequestProject.Main`, `Challenge`, and
-`Solution` successfully (see `verification/local-build.txt`). A fresh Linux build from
-the eventual public commit remains required before Palomar submission.
+`Solution` successfully (see `verification/local-build.txt`). The exact public commit was subsequently verified by Palomar; its registry record is
+linked above.
 
 | Command | Result |
 | --- | --- |
@@ -150,9 +150,9 @@ RequestProject` (the whole glob) therefore fails on exactly these seven modules.
 
 ## 5. `lake comparator`
 
-The Comparator results below are also inherited from the historical export and were
-run unsandboxed. They have not yet been reproduced from a V2 commit in Palomar's Linux
-sandbox.
+The local Comparator results below are inherited from the historical export and were
+run unsandboxed. The exact submitted V2 commit was also verified by Palomar in its Linux
+sandbox; the local Windows environment cannot reproduce that sandbox.
 
 `bwrap` could be installed but cannot create namespaces in this environment
 (`bwrap: Creating new namespace failed: Operation not permitted`), so the toolchain's
@@ -180,8 +180,8 @@ proof term than in `Challenge.lean`, which Comparator rejects.
 The exit-code-0 audit result below is retained from the historical Linux export. The
 current Windows runs of both `RequestProject/AxiomCheck.lean` and the guarded
 `verification/Audit.lean` also succeed and report only the three permitted standard
-axioms. Re-run the guarded audit from the exact public commit in Palomar's Linux
-sandbox before registration.
+axioms. Palomar's verification of the exact submitted commit passed the corresponding
+mechanical checks before registration.
 
 `lake env lean RequestProject/AxiomCheck.lean` and the guarded
 `lake env lean verification/Audit.lean` (exit code 0) give, for `main`, `main_counting`,
@@ -245,8 +245,9 @@ The metadata names Quanyu Tang and Zuoqin Wang as the authors and responsible
 maintainers, records the AI-assisted Aristotle/Codex workflow, and identifies the
 immutable manuscript source commit. The repository is licensed under Apache-2.0.
 The review status is deliberately `self-assessed`: the local checks below are not
-an independent mathematical peer review and this snapshot has not been
-submitted to or registered by Palomar.
+an independent mathematical peer review. The immutable Palomar submission snapshot
+was registered as PALOMAR-2026-10-09, version 1; the current main branch may contain
+documentation-only maintenance commits after that registered snapshot.
 
 ## 11. Verdict for this snapshot
 
@@ -258,8 +259,7 @@ documented experimental modules remain outside that path and are not claimed as
 part of the submitted result.
 
 The historical local Comparator run recorded here was unsandboxed because this Windows
-environment cannot provide Linux `bwrap` namespaces. It is not a substitute for checking
-the current V2 commit. Before a public submission, run the same commit in Palomar's
-sandbox or on Linux and record the resulting registry status. Until then, describe this
-repository as Palomar-compatible and prepared for submission, not as registered or
-endorsed by Palomar.
+environment cannot provide Linux `bwrap` namespaces. Palomar's own verification of the
+immutable submitted commit supplied the sandboxed check and the registry record linked
+above. The current main branch can contain documentation-only maintenance commits after
+that snapshot; the Palomar record continues to refer to the fixed submitted commit.
