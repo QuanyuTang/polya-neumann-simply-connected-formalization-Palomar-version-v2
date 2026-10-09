@@ -137,7 +137,7 @@ automation:
     formal proof development and Palomar port were AI-assisted and remain under
     the authors' responsibility. This snapshot records local Lean kernel,
     axiom-audit, source, checksum, and Comparator checks; Palomar's own review
-    passed for the immutable Palomar v1.0.0 snapshot (PALOMAR-2026-10-09,
+    passed for the immutable Palomar v1.0.0 snapshot (PALOMAR-2026-10-09-000007,
     version 1); the current main branch may contain documentation-only maintenance
     commits after that registered snapshot.
 
@@ -163,7 +163,7 @@ review:
     Palomar statement definitions and RequestProject/Defs.lean), source scans,
     checksums, and Comparator. No independent expert peer review is claimed. The
     Palomar v1.0.0 snapshot was registered as
-    PALOMAR-2026-10-09, version 1; the current main branch may contain
+    PALOMAR-2026-10-09-000007, version 1; the current main branch may contain
     documentation-only maintenance commits after that immutable snapshot.
 
 alignment:

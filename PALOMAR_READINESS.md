@@ -6,7 +6,7 @@ not rerun locally from a commit of this V2 repository. It is retained as a histo
 portability record. The source, metadata, checksum, and compatibility audits below were
 performed while preparing the Palomar submission snapshot. The exact submitted commit
 `f07f1c7051862ba146429db6eda5dc4e8b020f74` passed Palomar's mechanical verification
-and automated review and was registered as [PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
+and automated review and was registered as [PALOMAR-2026-10-09-000007, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09-000007&version=1).
 
 ## 1. Versions
 
@@ -246,7 +246,7 @@ maintainers, records the AI-assisted Aristotle/Codex workflow, and identifies th
 immutable manuscript source commit. The repository is licensed under Apache-2.0.
 The review status is deliberately `self-assessed`: the local checks below are not
 an independent mathematical peer review. The immutable Palomar submission snapshot
-was registered as PALOMAR-2026-10-09, version 1; the current main branch may contain
+was registered as PALOMAR-2026-10-09-000007, version 1; the current main branch may contain
 documentation-only maintenance commits after that registered snapshot.
 
 ## 11. Verdict for this snapshot

@@ -6,7 +6,7 @@ This repository contains a modular Lean 4 formalization of the strict Neumann
 Pólya inequality for bounded simply connected planar Lipschitz domains, together
 with a Challenge/Solution interface prepared for the
 [Palomar Registry](https://palomar-registry.org/). The Palomar v1.0.0 snapshot
-was registered as [PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
+was registered as [PALOMAR-2026-10-09-000007, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09-000007&version=1).
 The mathematical result was obtained by the authors with assistance from ChatGPT.
 The Lean formalization was produced by the authors with assistance from Aristotle
 (Harmonic) and Codex. The accompanying paper is currently in preparation and will
@@ -16,7 +16,7 @@ be posted on arXiv shortly. No arXiv identifier is available yet.
 [Palomar Challenge](Challenge.lean) ·
 [Palomar Solution](Solution.lean) ·
 [Verification audit](verification/Audit.lean) ·
-[Palomar Registry entry](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1) ·
+[Palomar Registry entry](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09-000007&version=1) ·
 [Palomar readiness report](PALOMAR_READINESS.md)
 
 ## 1. The substantive Lean theorem
@@ -149,7 +149,7 @@ pinned in `formalization.yaml` at the immutable Palomar commit.
 The planned paper will include a formal-verification paragraph describing the
 Lean 4.28.0 formalization and the Lean 4.35.0-rc2 compatibility port; the
 statements are unchanged in the port. The Palomar Registry record is
-[PALOMAR-2026-10-09, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09&version=1).
+[PALOMAR-2026-10-09-000007, version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-10-09-000007&version=1).
 
 ## 8. Scope and the meaning of a Palomar record
 
